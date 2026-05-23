@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>DBV · DBV Technologies — Analyse Forum 23/05/2026</title>
+<style>
+:root{
+  --acc:#818cf8;
+  --acc2:#6366f1;
+  --acc3:#4338ca;
+  --bg:#0d1117;
+  --bg2:#161b22;
+  --bg3:#1c2333;
+  --bg4:#21262d;
+  --border:#30363d;
+  --txt:#e6edf3;
+  --txt2:#8892b8;
+  --txt3:#546080;
+  --green:#22c55e;
+  --red:#f87171;
+  --orange:#fb923c;
+  --yellow:#facc15;
+  --cyan:#22d3ee;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{overflow-x:hidden;font-size:15px}
+body{background:var(--bg);color:var(--txt);font-family:'Segoe UI',system-ui,sans-serif;overflow-x:hidden;line-height:1.6}
+a{color:var(--acc);text-decoration:none}
+.wrap{max-width:960px;margin:0 auto;padding:24px 16px}
+
+/* TICKER BADGE */
+.ticker-bar{background:linear-gradient(135deg,var(--bg3),var(--bg2));border:1px solid var(--acc3);border-radius:8px;padding:10px 16px;font-size:.78rem;color:var(--txt2);margin-bottom:18px;letter-spacing:.03em;line-height:1.7}
+.ticker-bar strong{color:var(--acc)}
+
+/* TITRE */
+h1.company{font-size:2.7rem;font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:4px}
+h1.company .first{color:var(--acc)}
+
+/* SOUS-TITRE */
+.sub{color:var(--txt2);font-size:.85rem;margin-bottom:16px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.sub .pill{background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:2px 8px;font-size:.77rem}
+.sub .pill.rsi{border-color:var(--cyan);color:var(--cyan)}
+.sub .pill.macd{border-color:var(--red);color:var(--red)}
+
+/* SEP + TAGLINE */
+.sep{height:1px;background:linear-gradient(90deg,var(--acc),transparent);margin:16px 0}
+.tagline{font-size:.9rem;color:var(--txt2);margin-bottom:20px;font-style:italic;border-left:3px solid var(--acc);padding-left:12px}
+
+/* COURS ROW */
+.cours-row{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-bottom:18px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px 20px}
+.cours-val{font-size:2.4rem;font-weight:700;color:var(--txt)}
+.cours-badge{font-size:1rem;padding:4px 12px;border-radius:6px;font-weight:700}
+.cours-badge.neg{background:rgba(248,113,113,.15);color:var(--red);border:1px solid rgba(248,113,113,.3)}
+.cours-meta{display:flex;flex-wrap:wrap;gap:8px;margin-left:auto}
+.meta-tag{background:var(--bg3);border:1px solid var(--border);border-radius:5px;padding:3px 10px;font-size:.75rem;color:var(--txt2)}
+.meta-tag strong{color:var(--txt)}
+
+/* INDICATEURS */
+.ind-block{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:14px 18px;margin-bottom:16px;font-size:.82rem;color:var(--txt2)}
+.ind-line{display:flex;flex-wrap:wrap;gap:6px 18px;margin-bottom:6px}
+.ind-line:last-child{margin-bottom:0}
+.ind-line span{white-space:nowrap}
+.ind-line .hl{color:var(--txt)}
+.ind-line .acc{color:var(--acc)}
+.ind-line .grn{color:var(--green)}
+.ind-line .org{color:var(--orange)}
+.ind-line .red{color:var(--red)}
+.ind-line .yel{color:var(--yellow)}
+.ind-line .cyn{color:var(--cyan)}
+
+/* FIBCONSO */
+.fibconso{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px}
+.fctag{flex:1;min-width:180px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:12px 16px;text-align:center;font-size:.82rem}
+.fctag .label{color:var(--txt2);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+.fctag .val{font-weight:700;font-size:1rem;color:var(--acc)}
+
+/* SITBOX */
+.sitbox{background:linear-gradient(135deg,var(--bg3) 0%,#10101e 100%);border:1px solid var(--acc3);border-left:4px solid var(--acc);border-radius:10px;padding:20px 22px;margin-bottom:24px}
+.sitbox .sit-num{font-size:2.1rem;font-weight:800;color:var(--acc);margin-bottom:4px}
+.sitbox .sit-title{font-size:1rem;font-weight:600;color:var(--txt);margin-bottom:10px}
+.sitbox p{color:var(--txt2);font-size:.86rem;line-height:1.7}
+
+/* SECTION HEADERS */
+.section{margin-bottom:28px}
+.section h2{font-size:1rem;font-weight:700;color:var(--acc);text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.section h2::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--acc3),transparent)}
+
+/* ALERTES */
+.alerts{display:flex;flex-direction:column;gap:8px}
+.alert{border-radius:7px;padding:11px 14px;font-size:.83rem;line-height:1.6;border-left:3px solid}
+.alert.pos{background:rgba(34,197,94,.07);border-color:var(--green);color:#bbf7d0}
+.alert.neu{background:rgba(129,140,248,.07);border-color:var(--acc);color:#c7d2fe}
+.alert.att{background:rgba(250,204,21,.07);border-color:var(--yellow);color:#fef08a}
+.alert.warn{background:rgba(251,146,60,.07);border-color:var(--orange);color:#fed7aa}
+.alert.danger{background:rgba(248,113,113,.07);border-color:var(--red);color:#fecaca}
+.alert strong{display:block;margin-bottom:3px;font-size:.88rem}
+
+/* KPI GRID */
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:12px}
+.kpi{min-width:0;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:14px 16px}
+.kpi .kpi-label{font-size:.71rem;color:var(--txt2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px}
+.kpi .kpi-val{font-size:1.15rem;font-weight:700;color:var(--txt)}
+.kpi .kpi-sub{font-size:.73rem;color:var(--txt2);margin-top:3px}
+.kpi .kpi-val.acc{color:var(--acc)}
+.kpi .kpi-val.grn{color:var(--green)}
+.kpi .kpi-val.red{color:var(--red)}
+.kpi .kpi-val.org{color:var(--orange)}
+.kpi .kpi-val.yel{color:var(--yellow)}
+.kpi .kpi-val.cyn{color:var(--cyan)}
+
+/* TABLEAU */
+.prod-table{width:100%;border-collapse:collapse;font-size:.83rem;margin-top:10px}
+.prod-table th{background:var(--bg3);color:var(--acc);font-size:.74rem;text-transform:uppercase;letter-spacing:.08em;padding:9px 12px;text-align:left;border-bottom:1px solid var(--border)}
+.prod-table td{padding:9px 12px;border-bottom:1px solid var(--bg3);color:var(--txt2)}
+.prod-table td:first-child{color:var(--txt);font-weight:600}
+.prod-table tr:last-child td{border-bottom:none}
+.prod-table tr:hover td{background:var(--bg3)}
+.badge-pill{display:inline-block;font-size:.7rem;padding:2px 8px;border-radius:10px;font-weight:600}
+.bp-grn{background:rgba(34,197,94,.15);color:var(--green);border:1px solid rgba(34,197,94,.2)}
+.bp-acc{background:rgba(129,140,248,.1);color:var(--acc);border:1px solid rgba(129,140,248,.2)}
+.bp-org{background:rgba(251,146,60,.1);color:var(--orange);border:1px solid rgba(251,146,60,.2)}
+.bp-yel{background:rgba(250,204,21,.1);color:var(--yellow);border:1px solid rgba(250,204,21,.2)}
+.bp-red{background:rgba(248,113,113,.1);color:var(--red);border:1px solid rgba(248,113,113,.2)}
+.bp-cyn{background:rgba(34,211,238,.1);color:var(--cyan);border:1px solid rgba(34,211,238,.2)}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:20px}
+.timeline::before{content:'';position:absolute;left:4px;top:0;bottom:0;width:2px;background:var(--border)}
+.tl-item{position:relative;margin-bottom:14px;padding-left:18px}
+.tl-item::before{content:'';position:absolute;left:-16px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--bg3);border:2px solid var(--border)}
+.tl-item.done::before{background:var(--green);border-color:var(--green)}
+.tl-item.key::before{background:var(--acc);border-color:var(--acc);box-shadow:0 0 8px var(--acc)}
+.tl-item.now::before{background:var(--orange);border-color:var(--orange);box-shadow:0 0 8px var(--orange)}
+.tl-item.next::before{background:var(--cyan);border-color:var(--cyan);box-shadow:0 0 6px var(--cyan)}
+.tl-item.fut::before{background:var(--bg3);border-color:var(--txt3)}
+.tl-date{font-size:.73rem;color:var(--txt2);margin-bottom:2px}
+.tl-title{font-size:.87rem;font-weight:600;color:var(--txt)}
+.tl-desc{font-size:.78rem;color:var(--txt2)}
+
+/* FIBONACCI */
+.fibwrap{display:flex;flex-direction:column;gap:8px}
+.fib-row{display:grid;grid-template-columns:70px 90px 1fr 120px;align-items:center;gap:8px;font-size:.8rem}
+.fib-pct{color:var(--txt2);font-size:.73rem}
+.fib-price{color:var(--txt);font-weight:600}
+.fib-bar-wrap{height:6px;background:var(--bg3);border-radius:3px;overflow:hidden}
+.fib-bar{height:100%;border-radius:3px}
+.fib-lbl{color:var(--txt2);font-size:.73rem;text-align:right}
+.fib-row.current .fib-price{color:var(--orange)}
+.fib-row.current .fib-pct{color:var(--orange)}
+.fib-section-title{font-size:.78rem;color:var(--acc);text-transform:uppercase;letter-spacing:.07em;margin:14px 0 8px;padding-left:2px}
+
+/* CONSENSUS */
+.agrid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:16px}
+.acard{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:14px 10px;text-align:center}
+.acard .ac-num{font-size:1.6rem;font-weight:800;margin-bottom:4px}
+.acard .ac-lbl{font-size:.72rem;color:var(--txt2);text-transform:uppercase;letter-spacing:.06em}
+.cbox{background:var(--bg3);border:1px solid var(--acc3);border-radius:8px;padding:16px;font-size:.84rem;color:var(--txt2);line-height:1.7}
+.cbox .ctitle{font-size:.95rem;font-weight:700;color:var(--acc);margin-bottom:8px}
+
+/* RISQUES */
+.risk-table{width:100%;border-collapse:collapse;font-size:.82rem}
+.risk-table th{background:var(--bg3);color:var(--txt2);font-size:.73rem;text-transform:uppercase;letter-spacing:.07em;padding:9px 12px;text-align:left;border-bottom:1px solid var(--border)}
+.risk-table td{padding:9px 12px;border-bottom:1px solid var(--bg3);vertical-align:top}
+.risk-table td:first-child{color:var(--txt);font-weight:600;width:22%}
+.risk-table td:nth-child(2){color:var(--txt2);width:16%}
+.risk-table td:nth-child(3){width:14%}
+.risk-table td:last-child{color:var(--txt2);font-size:.78rem}
+.risk-table tr:last-child td{border-bottom:none}
+.niv{font-size:.71rem;font-weight:700;padding:2px 8px;border-radius:4px}
+.niv-h{background:rgba(248,113,113,.15);color:var(--red)}
+.niv-m{background:rgba(250,204,21,.15);color:var(--yellow)}
+.niv-l{background:rgba(34,197,94,.15);color:var(--green)}
+
+/* AVIS PERSO */
+.pc{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:20px}
+.score-row{display:flex;align-items:center;gap:16px;margin-bottom:16px}
+.score-txt .score-num{font-size:2rem;font-weight:800;color:var(--acc)}
+.score-txt .score-max{font-size:1rem;color:var(--txt2)}
+.score-txt .score-verdict{font-size:.83rem;color:var(--txt2)}
+.pros-cons{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
+.pro-block,.con-block{background:var(--bg3);border-radius:7px;padding:14px}
+.pro-block h4{color:var(--green);font-size:.8rem;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px}
+.con-block h4{color:var(--red);font-size:.8rem;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px}
+.pro-block li,.con-block li{color:var(--txt2);font-size:.81rem;margin-bottom:5px;padding-left:14px;position:relative;list-style:none}
+.pro-block li::before{content:'✓';position:absolute;left:0;color:var(--green);font-size:.75rem}
+.con-block li::before{content:'✗';position:absolute;left:0;color:var(--red);font-size:.75rem}
+.conclu{background:var(--bg3);border-left:3px solid var(--acc);border-radius:0 7px 7px 0;padding:14px;font-size:.85rem;color:var(--txt2);line-height:1.7;margin-bottom:14px}
+.levels{display:flex;flex-wrap:wrap;gap:8px}
+.lv{padding:5px 14px;border-radius:6px;font-size:.8rem;font-weight:600}
+.lv-buy{background:rgba(34,197,94,.12);color:var(--green);border:1px solid rgba(34,197,94,.25)}
+.lv-tp{background:rgba(129,140,248,.1);color:var(--acc);border:1px solid rgba(129,140,248,.2)}
+.lv-sl{background:rgba(248,113,113,.1);color:var(--red);border:1px solid rgba(248,113,113,.2)}
+.lv-sup{background:rgba(250,204,21,.1);color:var(--yellow);border:1px solid rgba(250,204,21,.2)}
+.lv-cat{background:rgba(251,146,60,.1);color:var(--orange);border:1px solid rgba(251,146,60,.2)}
+
+/* FOOTER */
+.footer{margin-top:32px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:16px;font-size:.75rem;color:var(--txt2)}
+.footer .src-title{color:var(--acc);font-size:.78rem;font-weight:600;margin-bottom:8px}
+.footer ul{padding-left:16px;margin-bottom:12px}
+.footer ul li{margin-bottom:3px}
+.footer .npc{background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:10px 12px;font-size:.72rem;color:var(--txt3);line-height:1.6;margin-top:10px}
+
+/* BIOTECH BANNER */
+.bio-banner{background:linear-gradient(90deg,rgba(129,140,248,.12),rgba(99,102,241,.06));border:1px solid var(--acc3);border-radius:8px;padding:10px 16px;font-size:.8rem;color:var(--acc);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- BIOTECH BANNER -->
+<div class="bio-banner">
+  💊 <strong>VALEUR BIOTECH · RISQUE BINAIRE</strong> — Analyse d'une société en stade clinique avancé sans revenus récurrents. Catalyseur imminent : dépôt BLA FDA H1 2026. Volatilité élevée — capital à risque.
+</div>
+
+<!-- 1. TICKER BADGE -->
+<div class="ticker-bar">
+  <strong>DBV · DBV TECHNOLOGIES</strong> — Biotech allergies alimentaires · Patch Viaskin Peanut (épit. immunothérapie) · Phase 3 VITESSE : <strong>endpoint primaire atteint</strong> (déc. 2025) · BLA FDA H1 2026 <strong>IMMINENT</strong> · Trésorerie : <strong>229 M$</strong> (coverage T2 2027) · Kempen : <strong>Achat / Objectif 9 €</strong> · RSI : <strong>48,52</strong> · MACD ZL : <strong>−0,27</strong>
+</div>
+
+<!-- 2. TITRE -->
+<h1 class="company"><span class="first">D</span>BV <span style="color:var(--acc2)">Technologies</span></h1>
+
+<!-- 3. SOUS-TITRE -->
+<div class="sub">
+  <span>📅 <strong>23/05/2026</strong> · Dernier tick PRT : 22/05</span>
+  <span>⏱ Timeframe : <strong>1S (Hebdo)</strong></span>
+  <span class="pill rsi">RSI(14) : 48,52</span>
+  <span class="pill macd">MACD ZL : −0,27</span>
+  <span>Euronext Paris · DBVT (NASDAQ)</span>
+</div>
+
+<!-- 4. SÉPARATEUR + TAGLINE -->
+<div class="sep"></div>
+<div class="tagline">DBV Technologies est une société biopharmaceutique de stade avancé qui développe des thérapies visant à traiter les allergies alimentaires via la voie épicutanée (patch). Son produit phare, le patch Viaskin Peanut, cible l'allergie à l'arachide chez l'enfant — potentiellement le premier et unique traitement de ce type à obtenir l'autorisation FDA.</div>
+
+<!-- 5. COURS ROW -->
+<div class="cours-row">
+  <div>
+    <div style="font-size:.75rem;color:var(--txt2);margin-bottom:2px">Cours (EUR · Euronext Paris)</div>
+    <div class="cours-val">3,182 €</div>
+  </div>
+  <div class="cours-badge neg">▼ −0,44 %</div>
+  <div class="cours-meta">
+    <div class="meta-tag">Ticker <strong>DBV</strong></div>
+    <div class="meta-tag">Marché <strong>Euronext Paris</strong></div>
+    <div class="meta-tag">NASDAQ <strong>DBVT</strong></div>
+    <div class="meta-tag">ISIN <strong>FR0010417345</strong></div>
+    <div class="meta-tag">PEA <strong>Éligible</strong></div>
+    <div class="meta-tag">Dividende <strong>Aucun</strong></div>
+  </div>
+</div>
+
+<!-- 6. INDICATEURS -->
+<div class="ind-block">
+  <div class="ind-line">
+    <span>📅 <span class="hl">23/05/2026</span> — Dernier tick PRT : <span class="hl">22/05/2026</span></span>
+    <span>Timeframe : <span class="acc">Hebdomadaire (1S)</span></span>
+    <span>RSI(14) : <span class="cyn">48,52</span> — Zone neutre / légèrement baissier</span>
+    <span>MACD Zéro Lag : <span class="red">−0,27</span> — Signal baissier (sous zéro)</span>
+  </div>
+  <div class="ind-line">
+    <span>ATH : <span class="acc">~4,499 €</span></span>
+    <span>Distance ATH : <span class="org">−29,3 %</span></span>
+    <span>Range 52 sem. : <span class="hl">~1,36 € → 4,50 €</span></span>
+    <span>Perf. 1 an : <span class="grn">+120 % environ</span></span>
+  </div>
+  <div class="ind-line">
+    <span>Prix vs SMA(20) : <span class="red">En dessous — pression court terme</span></span>
+    <span>Ichimoku : <span class="org">Dans le nuage / zone neutre</span></span>
+    <span>SMA(50) : <span class="grn">↗ Au-dessus — tendance fond haussier</span></span>
+    <span>Volume semaine : <span class="hl">~3,25 M</span></span>
+  </div>
+</div>
+
+<!-- 7. FIBCONSO -->
+<div class="fibconso">
+  <div class="fctag">
+    <div class="label">Position Fibonacci</div>
+    <div class="val">Entre 61,8 % et 100 %</div>
+    <div style="color:var(--txt2);font-size:.75rem;margin-top:4px">Au-dessus support 2,975 € (61,8%)</div>
+  </div>
+  <div class="fctag">
+    <div class="label">Signal Technique</div>
+    <div class="val" style="color:var(--red)">MACD négatif</div>
+    <div style="color:var(--txt2);font-size:.75rem;margin-top:4px">RSI neutre · Sous SMA(20) · Consolidation</div>
+  </div>
+  <div class="fctag">
+    <div class="label">Consensus Analystes</div>
+    <div class="val" style="color:var(--green)">Achat</div>
+    <div style="color:var(--txt2);font-size:.75rem;margin-top:4px">Kempen : Objectif 9 € (+183 %)</div>
+  </div>
+</div>
+
+<!-- 8. SITBOX -->
+<div class="sitbox">
+  <div class="sit-num">BLA FDA H1 2026 — IMMINENT</div>
+  <div class="sit-title">Catalyseur binaire majeur : le dépôt réglementaire le plus attendu de l'histoire de DBV</div>
+  <p>
+    DBV Technologies se trouve à un <strong>moment charnière</strong> de son histoire. Après 15 ans de développement, le patch <strong>Viaskin Peanut</strong> a franchi l'étape déterminante en décembre 2025 avec les <strong>résultats positifs de la phase 3 VITESSE</strong> : 46,6 % de répondeurs vs 14,8 % sous placebo (+31,8 pp, seuil requis : 15 pp). Fort de cette démonstration clinique et d'un accord FDA sur les données de sécurité, la société se prépare à soumettre la <strong>demande de BLA (Biologics License Application)</strong> auprès de la FDA au cours du S1 2026 — le dépôt est donc attendu <strong>dans les prochaines semaines</strong>. La société bénéficie de la <strong>Breakthrough Therapy Designation</strong>, ouvrant droit à une revue prioritaire (PDUFA ~6 mois). Côté finances, la trésorerie a été sécurisée à <strong>229 M$</strong> au 31 mars 2026 après l'exercice intégral des warrants (166,7 M€ levés), couvrant les opérations jusqu'au <strong>T2 2027</strong>. Techniquement, le RSI hebdo à 48,52 et le MACD Zéro Lag en territoire négatif (−0,27) témoignent d'une consolidation post-ATH (~4,50 €) — la valeur consolide dans une zone d'attente avant le prochain catalyseur. Un dépôt BLA annoncé pourrait être le déclencheur d'un nouveau mouvement haussier vers les <strong>objectifs à 9 € (Kempen)</strong>.
+  </p>
+</div>
+
+<!-- 9. ALERTES -->
+<div class="section">
+  <h2>🚦 Alertes & Points de vigilance</h2>
+  <div class="alerts">
+    <div class="alert pos">
+      <strong>🟢 Phase 3 VITESSE — Endpoint primaire atteint (16 décembre 2025)</strong>
+      Résultat historique : 46,6 % de répondeurs vs 14,8 % (placebo) — différence de 31,8 pp, bien au-delà du seuil de 15 pp. L'étude VITESSE est le plus grand essai d'immunothérapie jamais conduit dans les allergies alimentaires (654 enfants, 86 sites mondiaux). Adhérence au traitement de 96,2 %. Profil de sécurité conforme aux études précédentes.
+    </div>
+    <div class="alert pos">
+      <strong>🟢 BLA FDA H1 2026 — Dépôt imminent · Breakthrough Therapy · Priority Review possible</strong>
+      Le dépôt de la demande de licence biologique pour la tranche 4-7 ans est prévu S1 2026. La désignation Breakthrough Therapy accélère le dialogue FDA. Si éligible à la Priority Review, le délai d'examen serait de ~6 mois (vs 12 mois standard) — potentielle approbation fin 2026/T1 2027.
+    </div>
+    <div class="alert pos">
+      <strong>🟢 Trésorerie 229 M$ — Runway sécurisé jusqu'au T2 2027</strong>
+      Après l'exercice complet des warrants (166,7 M€ levés), la trésorerie au 31/03/2026 est de 229 M$. Elle couvre les opérations jusqu'au T2 2027, bien au-delà du délai d'approbation FDA potentiel. Rupture majeure avec la situation précédente (going concern alerts jusqu'en T3 2026 avant la levée).
+    </div>
+    <div class="alert pos">
+      <strong>🟢 Deuxième dépôt BLA prévu en 2026 — Tranche 1-3 ans (COMFORT Toddlers)</strong>
+      En parallèle, DBV développe Viaskin Peanut pour les tout-petits (1-3 ans) via l'étude COMFORT Toddlers. Un deuxième dépôt réglementaire est anticipé en 2026, potentiellement en demande de procédure accélérée. Doublement possible du marché addressable.
+    </div>
+    <div class="alert pos">
+      <strong>🟢 JP Morgan — Franchissement du seuil de 10 % du capital (janv. 2026)</strong>
+      JP Morgan Chase a déclaré à l'AMF avoir franchi indirectement en hausse le seuil de 10 % du capital en janvier 2026. Entrée d'un actionnaire institutionnel majeur = signal de confiance fort dans le dossier clinique.
+    </div>
+    <div class="alert neu">
+      <strong>🔵 Performance 1 an : +120 % — Correction post-ATH en cours</strong>
+      Le titre est passé de ~1,4 € début 2025 à un ATH de ~4,50 € avant de consolider à 3,182 €. La baisse de −29 % par rapport à l'ATH est classique pour une biotech après une annonce positive majeure et une levée de fonds. La consolidation actuelle crée une opportunité d'entrée avant le dépôt BLA.
+    </div>
+    <div class="alert neu">
+      <strong>🔵 Présentation données VITESSE complètes — Congrès AAAAI 2026 (févr.)</strong>
+      DBV a présenté des données positives complémentaires lors du Congrès annuel de l'American Academy of Allergy, Asthma and Immunology en février 2026. Les données renforcent le dossier clinique pour la soumission BLA.
+    </div>
+    <div class="alert att">
+      <strong>🟡 RSI 48,52 et MACD ZL négatif (−0,27) — Absence de signal d'achat technique</strong>
+      Le RSI hebdomadaire est sous 50 (zone neutre/légèrement baissier), et le MACD Zéro Lag est négatif. Le prix est sous la SMA(20). Pas de signal d'achat technique clair à court terme — la valeur consolide. Un passage du MACD en positif serait un premier signal technique favorable.
+    </div>
+    <div class="alert att">
+      <strong>🟡 Perte nette Q1 2026 en hausse à 47,6 M$ — Cash burn soutenu</strong>
+      La perte nette du T1 2026 ressort à 47,6 M$ (vs ~33 M$ T1 2025), liée à l'augmentation des dépenses de R&D pour finaliser le dossier BLA et préparer la commercialisation. Rythme de burn rate élevé mais couvert par la trésorerie jusqu'au T2 2027.
+    </div>
+    <div class="alert warn">
+      <strong>⚠️ Risque binaire FDA — Probabilité d'approbation incertaine</strong>
+      Malgré des données solides, la FDA peut refuser, demander des études complémentaires ou émettre une Complete Response Letter (CRL). DBV a déjà subi deux CRL historiques (2020, 2023) sur des versions précédentes du programme. Un refus provoquerait une chute du cours de l'ordre de 50-70 %. Le dossier actuel est techniquement plus robuste, mais le risque subsiste.
+    </div>
+    <div class="alert warn">
+      <strong>⚠️ Dilution future probable — Warrants, BSA en circulation</strong>
+      DBV a régulièrement levé des fonds via des instruments dilutifs (ABSA, BSA, PIPE, ATM). De nouveaux instruments peuvent être exercés ou émis. La base d'actions pourrait augmenter significativement en cas de nouvelles levées de fonds pour financer la commercialisation post-approbation.
+    </div>
+    <div class="alert danger">
+      <strong>🔴 Aucun revenu récurrent — Société en pre-revenue, financement par les marchés</strong>
+      DBV ne génère pas de revenus commerciaux. Les produits opérationnels Q1 2026 sont de 2,2 M$ (subventions, accords de licence mineurs). La société dépend entièrement des marchés financiers pour se financer. En l'absence d'approbation FDA, une nouvelle levée de fonds sera nécessaire avant T2 2027.
+    </div>
+  </div>
+</div>
+
+<!-- 10. KPI GRID -->
+<div class="section">
+  <h2>📊 Indicateurs clés</h2>
+  <div class="kpi-grid">
+    <div class="kpi">
+      <div class="kpi-label">Cours (EUR)</div>
+      <div class="kpi-val org">3,182 €</div>
+      <div class="kpi-sub">−0,44 % · 1S hebdo</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">ATH (EUR)</div>
+      <div class="kpi-val acc">~4,499 €</div>
+      <div class="kpi-sub">Distance : −29,3 %</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">RSI (14)</div>
+      <div class="kpi-val cyn">48,52</div>
+      <div class="kpi-sub">Zone neutre · légèrement sous 50</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">MACD ZL</div>
+      <div class="kpi-val red">−0,27</div>
+      <div class="kpi-sub">Signal baissier · sous ligne zéro</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Trésorerie</div>
+      <div class="kpi-val grn">229 M$</div>
+      <div class="kpi-sub">Au 31/03/2026 · coverage T2 2027</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Perte nette Q1</div>
+      <div class="kpi-val red">−47,6 M$</div>
+      <div class="kpi-sub">vs −33 M$ T1 2025 · R&D en hausse</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">VITESSE résultats</div>
+      <div class="kpi-val grn">46,6 %</div>
+      <div class="kpi-sub">vs 14,8 % placebo · Threshold +15 pp ✓</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">BLA FDA</div>
+      <div class="kpi-val acc">H1 2026</div>
+      <div class="kpi-sub">Dépôt imminent · 4-7 ans</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Designation FDA</div>
+      <div class="kpi-val grn">Breakthrough</div>
+      <div class="kpi-sub">Priority Review possible</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Levée mars 2025</div>
+      <div class="kpi-val acc">166,7 M€</div>
+      <div class="kpi-sub">BSA exercés intégralement</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Objectif analyste</div>
+      <div class="kpi-val grn">9 € (Kempen)</div>
+      <div class="kpi-sub">+183 % · Achat maintenu 05/05/2026</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Perf. 1 an</div>
+      <div class="kpi-val grn">+120 %</div>
+      <div class="kpi-sub">Depuis creux ~1,4 € début 2025</div>
+    </div>
+  </div>
+</div>
+
+<!-- 11. PRÉSENTATION -->
+<div class="section">
+  <h2>🏢 Présentation & Pipeline</h2>
+  <p style="color:var(--txt2);font-size:.85rem;margin-bottom:12px;line-height:1.7">
+    DBV Technologies (Euronext : DBV / NASDAQ : DBVT) est une société biopharmaceutique française fondée en 2002, spécialisée dans le développement de thérapies par voie épicutanée (patch) pour les allergies alimentaires. Son approche repose sur la EPIT (Epicutaneous Immunotherapy), qui consiste à désensibiliser les patients en leur appliquant quotidiennement un patch contenant des protéines allergènes sur la peau. L'allergie à l'arachide touche environ 1,6 % des enfants aux États-Unis (marché de 1,5-2 Mds $) avec peu de solutions thérapeutiques validées — un besoin médical non satisfait majeur.
+  </p>
+  <table class="prod-table">
+    <thead>
+      <tr>
+        <th>Programme</th>
+        <th>Indication</th>
+        <th>Stade</th>
+        <th>Statut</th>
+        <th>Prochain jalon</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Viaskin Peanut 4-7 ans</td>
+        <td>Allergie arachide enfant</td>
+        <td><span class="badge-pill bp-grn">Phase 3 ✓</span></td>
+        <td>BLA FDA S1 2026</td>
+        <td><strong>Dépôt BLA IMMINENT</strong> · PDUFA ~H2 2026</td>
+      </tr>
+      <tr>
+        <td>Viaskin Peanut 1-3 ans</td>
+        <td>Allergie arachide toddlers</td>
+        <td><span class="badge-pill bp-acc">Phase 3 COMFORT</span></td>
+        <td>Données en cours · Dépôt 2026 prévu</td>
+        <td>BLA + demande procédure accélérée 2026</td>
+      </tr>
+      <tr>
+        <td>Viaskin Milk</td>
+        <td>Allergie lait de vache</td>
+        <td><span class="badge-pill bp-yel">Phase 2b</span></td>
+        <td>En développement</td>
+        <td>Étude en cours · résultats futurs</td>
+      </tr>
+      <tr>
+        <td>EPIT Plateforme</td>
+        <td>Allergies multiples</td>
+        <td><span class="badge-pill bp-org">Préclinique / Exploration</span></td>
+        <td>R&D long terme</td>
+        <td>Potentiel d'extension de la plateforme</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 12. CHRONOLOGIE -->
+<div class="section">
+  <h2>📅 Chronologie des événements clés</h2>
+  <div class="timeline">
+    <div class="tl-item done">
+      <div class="tl-date">2020 & 2023</div>
+      <div class="tl-title">CRL FDA × 2 — Refus historiques · Programme restructuré</div>
+      <div class="tl-desc">DBV a reçu deux Complete Response Letters de la FDA. Ces échecs ont contraint la société à redéfinir l'étude pivotale, aboutissant à VITESSE avec des critères mieux définis.</div>
+    </div>
+    <div class="tl-item done">
+      <div class="tl-date">Mars 2025</div>
+      <div class="tl-title">Accord FDA sur données de sécurité + Levée 166,7 M€</div>
+      <div class="tl-desc">Accord FDA permettant d'accélérer le dépôt BLA d'un an. Levée de fonds via ABSA + BSA permettant de sécuriser la trésorerie.</div>
+    </div>
+    <div class="tl-item key">
+      <div class="tl-date">16 décembre 2025</div>
+      <div class="tl-title">VITESSE — Résultats Phase 3 POSITIFS · Endpoint primaire atteint ✓</div>
+      <div class="tl-desc">46,6 % répondeurs vs 14,8 % placebo. Différence 31,8 pp (seuil 15 pp). Plus grand essai immunothérapie allergies alimentaires. Déclenchement de l'accélération des warrants.</div>
+    </div>
+    <div class="tl-item done">
+      <div class="tl-date">Janv. 2026</div>
+      <div class="tl-title">JP Morgan franchit 10 % du capital + exercice BSA</div>
+      <div class="tl-desc">JP Morgan entre significativement au capital. Les bons de souscription sont exercés intégralement : 166,7 M€ levés, trésorerie portée à 229 M$ au 31/03.</div>
+    </div>
+    <div class="tl-item done">
+      <div class="tl-date">Fév. 2026</div>
+      <div class="tl-title">Congrès AAAAI — Données VITESSE complémentaires présentées</div>
+      <div class="tl-desc">Présentation orale lors du congrès référence de l'allergie mondiale. Données renforcent le dossier pour la soumission BLA.</div>
+    </div>
+    <div class="tl-item done">
+      <div class="tl-date">30 avr. 2026</div>
+      <div class="tl-title">Résultats Q1 2026 — Perte 47,6 M$ · Trésorerie 229 M$</div>
+      <div class="tl-desc">Confirmation : deux dépôts réglementaires prévus en 2026. Trésorerie couvre jusqu'au T2 2027. Kempen révise l'objectif de 11 € à 9 € mais maintient l'Achat.</div>
+    </div>
+    <div class="tl-item now">
+      <div class="tl-date">MAI-JUIN 2026 ← MAINTENANT</div>
+      <div class="tl-title">Dépôt BLA FDA 4-7 ans — ATTENDU INCESSAMMENT</div>
+      <div class="tl-desc">Le dépôt est prévu H1 2026. Nous sommes fin mai — le catalyseur est imminent. Le marché l'attend activement. Annonce possible à tout moment avant fin juin.</div>
+    </div>
+    <div class="tl-item next">
+      <div class="tl-date">3 juin 2026</div>
+      <div class="tl-title">Assemblée Générale Mixte</div>
+      <div class="tl-desc">Événement actionnaire. Possible communication sur l'état d'avancement du dépôt BLA. À surveiller de près.</div>
+    </div>
+    <div class="tl-item next">
+      <div class="tl-date">T2-T3 2026</div>
+      <div class="tl-title">Acceptation du dossier BLA par la FDA (filing date) + Date PDUFA</div>
+      <div class="tl-desc">Après le dépôt, la FDA dispose de 60 jours pour accepter ou refuser le dossier. En cas d'acceptation + Priority Review, la date de décision (PDUFA) serait ~6 mois après.</div>
+    </div>
+    <div class="tl-item fut">
+      <div class="tl-date">29 juil. 2026</div>
+      <div class="tl-title">Résultats semestriels S1 2026</div>
+      <div class="tl-desc">Mise à jour trésorerie, burn rate et état d'avancement du programme réglementaire.</div>
+    </div>
+    <div class="tl-item fut">
+      <div class="tl-date">H2 2026 / T1 2027</div>
+      <div class="tl-title">Décision FDA potentielle (PDUFA) — Catalyseur binaire ultime</div>
+      <div class="tl-desc">Si Priority Review accordée, décision possible fin 2026 / début 2027. Approbation = commercialisation aux États-Unis. Refus (CRL) = forte baisse probable.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 13. FIBONACCI -->
+<div class="section">
+  <h2>📐 Niveaux Fibonacci (PRT · 1S · 0% = creux · 100% = sommet)</h2>
+
+  <div class="fib-section-title">📌 Fibonacci principal — Range complet cycle (creux 0,51 € → ATH 4,499 €)</div>
+  <div class="fibwrap">
+    <div class="fib-row">
+      <div class="fib-pct">100 %</div>
+      <div class="fib-price">4,499 €</div>
+      <div class="fib-bar-wrap"><div class="fib-bar" style="width:100%;background:var(--acc)"></div></div>
+      <div class="fib-lbl">ATH · Résistance majeure</div>
+    </div>
+    <div class="fib-row current">
+      <div class="fib-pct">≈ 68 %</div>
+      <div class="fib-price">3,182 € ← COURS</div>
+      <div class="fib-bar-wrap"><div class="fib-bar" style="width:68%;background:var(--orange)"></div></div>
+      <div class="fib-lbl" style="color:var(--orange)">Zone consolidation</div>
+    </div>
+    <div class="fib-row">
+      <div class="fib-pct">61,8 %</div>
+      <div class="fib-price">2,975 €</div>
+      <div class="fib-bar-wrap"><div class="fib-bar" style="width:61.8%;background:var(--yellow)"></div></div>
+      <div class="fib-lbl">Support clé à défendre</div>
+    </div>
+    <div class="fib-row">
+      <div class="fib-pct">50 %</div>
+      <div class="fib-price">2,505 €</div>
+      <div class="fib-bar-wrap"><div class="fib-bar" style="width:50%;background:var(--txt3)"></div></div>
+      <div class="fib-lbl">Support médiane</div>
+    </div>
+    <div class="fib-row">
+      <div class="fib-pct">38,2 %</div>
+      <div class="fib-price">2,034 €</div>
+      <div class="fib-bar-wrap"><div class="fib-bar" style="width:38.2%;background:var(--txt3)"></div></div>
+      <div class="fib-lbl">Zone d'achat profond</div>
+    </div>
+    <div class="fib-row">
+      <div class="fib-pct">23,6 %</div>
+      <div class="fib-price">1,451 €</div>
+      <div class="fib-bar-wrap"><div class="fib-bar" style="width:23.6%;background:var(--txt3)"></div></div>
+      <div class="fib-lbl">Support secondaire</div>
+    </div>
+    <div class="fib-row">
+      <div class="fib-pct">0 %</div>
+      <div class="fib-price">0,51 €</div>
+      <div class="fib-bar-wrap"><div class="fib-bar" style="width:4%;background:var(--green)"></div></div>
+      <div class="fib-lbl">Creux cycle · plancher historique</div>
+    </div>
+  </div>
+
+  <div class="fib-section-title">📌 Fibonacci récent — Extension (creux récent 2,888 € → objectif haut)</div>
+  <div class="fibwrap">
+    <div class="fib-row">
+      <div class="fib-pct">61,8 %</div>
+      <div class="fib-price">4,762 €</div>
+      <div class="fib-bar-wrap"><div class="fib-bar" style="width:100%;background:var(--acc)"></div></div>
+      <div class="fib-lbl">Objectif extension haute</div>
+    </div>
+    <div class="fib-row">
+      <div class="fib-pct">50 %</div>
+      <div class="fib-price">4,404 €</div>
+      <div class="fib-bar-wrap"><div class="fib-bar" style="width:85%;background:var(--acc2)"></div></div>
+      <div class="fib-lbl">Objectif extension médiane</div>
+    </div>
+    <div class="fib-row">
+      <div class="fib-pct">38,2 %</div>
+      <div class="fib-price">4,046 €</div>
+      <div class="fib-bar-wrap"><div class="fib-bar" style="width:70%;background:var(--yellow)"></div></div>
+      <div class="fib-lbl">TP1 zone extension</div>
+    </div>
+    <div class="fib-row current">
+      <div class="fib-pct">≈ 7 %</div>
+      <div class="fib-price">3,182 € ← COURS</div>
+      <div class="fib-bar-wrap"><div class="fib-bar" style="width:22%;background:var(--orange)"></div></div>
+      <div class="fib-lbl" style="color:var(--orange)">Cours actuel</div>
+    </div>
+    <div class="fib-row">
+      <div class="fib-pct">23,61 %</div>
+      <div class="fib-price">3,604 €</div>
+      <div class="fib-bar-wrap"><div class="fib-bar" style="width:36%;background:var(--txt2)"></div></div>
+      <div class="fib-lbl">Résistance court terme</div>
+    </div>
+    <div class="fib-row">
+      <div class="fib-pct">0 %</div>
+      <div class="fib-price">2,888 €</div>
+      <div class="fib-bar-wrap"><div class="fib-bar" style="width:5%;background:var(--green)"></div></div>
+      <div class="fib-lbl">Base récente · support fort</div>
+    </div>
+  </div>
+</div>
+
+<!-- 14. CONSENSUS ANALYSTES -->
+<div class="section">
+  <h2>🎯 Consensus analystes</h2>
+  <div class="agrid">
+    <div class="acard">
+      <div class="ac-num" style="color:var(--green)">2</div>
+      <div class="ac-lbl">Achat Fort</div>
+    </div>
+    <div class="acard">
+      <div class="ac-num" style="color:#4ade80">1</div>
+      <div class="ac-lbl">Achat</div>
+    </div>
+    <div class="acard">
+      <div class="ac-num" style="color:var(--txt2)">0</div>
+      <div class="ac-lbl">Conserver</div>
+    </div>
+    <div class="acard">
+      <div class="ac-num" style="color:var(--txt2)">0</div>
+      <div class="ac-lbl">Alléger</div>
+    </div>
+    <div class="acard">
+      <div class="ac-num" style="color:var(--txt2)">0</div>
+      <div class="ac-lbl">Vendre</div>
+    </div>
+  </div>
+  <div class="cbox">
+    <div class="ctitle">Synthèse consensus — Source : Boursorama / Kempen (données au 22/05/2026)</div>
+    Le nombre d'analystes couvrant DBV reste limité, ce qui est typique pour une small-cap biotech en stade pré-commercial. Le consensus disponible est unanimement positif. <strong>Kempen</strong> (analyste spécialisé biotechs européennes) a maintenu sa recommandation à l'<strong>Achat</strong> le 4 mai 2026 tout en abaissant son objectif de <strong>11 € à 9 €</strong> — révision faisant suite à la perte Q1 plus élevée qu'attendu et au ralentissement du timing de commercialisation. L'objectif de 9 € implique néanmoins un potentiel de <strong>+183 %</strong> par rapport au cours actuel. La valorisation implicite de Kempen intègre une probabilité d'approbation FDA et une commercialisation aux États-Unis sur le marché estimé à 1,5-2 Mds $. <em>Note : le faible nombre d'analystes est un facteur de risque — une première couverture négative ou un abaissement pourrait peser sur le cours.</em>
+  </div>
+</div>
+
+<!-- 15. RISQUES -->
+<div class="section">
+  <h2>⚠️ Matrice des risques</h2>
+  <table class="risk-table">
+    <thead>
+      <tr>
+        <th>Risque</th>
+        <th>Nature</th>
+        <th>Niveau</th>
+        <th>Commentaire</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Refus / CRL FDA (BLA)</td>
+        <td>Réglementaire</td>
+        <td><span class="niv niv-h">Élevé</span></td>
+        <td>DBV a déjà reçu 2 CRL (2020, 2023). Malgré des données plus solides, la FDA peut émettre des demandes complémentaires. Impact cours estimé −50 à −70 % en cas de CRL.</td>
+      </tr>
+      <tr>
+        <td>Délai dépôt BLA H1 2026</td>
+        <td>Opérationnel</td>
+        <td><span class="niv niv-m">Moyen</span></td>
+        <td>Le dépôt est annoncé pour H1 2026. Tout retard au-delà de juin créerait une déception de marché. Risque de "non-event" qui prolongerait la consolidation technique.</td>
+      </tr>
+      <tr>
+        <td>Cash burn / Dilution future</td>
+        <td>Financier</td>
+        <td><span class="niv niv-m">Moyen</span></td>
+        <td>Burn rate ~47 M$/trimestre. Trésorerie de 229 M$ couvre jusqu'au T2 2027 seulement. Sans approbation FDA, une nouvelle levée sera nécessaire, avec dilution associée.</td>
+      </tr>
+      <tr>
+        <td>Concurrence (Palforzia / Aimmune)</td>
+        <td>Compétitif</td>
+        <td><span class="niv niv-l">Faible</span></td>
+        <td>Palforzia (Nestlé / Aimmune) est déjà approuvé (voie orale, 4-17 ans). La voie épicutanée de Viaskin est différenciée (meilleure tolérance cutanée). Marché non saturé.</td>
+      </tr>
+      <tr>
+        <td>Faible liquidité / Volatilité biotech</td>
+        <td>De marché</td>
+        <td><span class="niv niv-m">Moyen</span></td>
+        <td>Small-cap biotech avec float limité. Les annonces peuvent provoquer des gaps importants (−/+ 20-30 % en une séance). Risque de manipulation ou de spéculation autour des dates clés.</td>
+      </tr>
+      <tr>
+        <td>Pas de revenu récurrent</td>
+        <td>Financier</td>
+        <td><span class="niv niv-h">Élevé</span></td>
+        <td>DBV est en pre-revenue. Toute la valeur repose sur l'approbation FDA et la commercialisation. La valorisation actuelle intègre une probabilité d'approbation implicite significative.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 16. AVIS PERSO -->
+<div class="section">
+  <h2>💡 Avis personnel & Niveaux</h2>
+  <div class="pc">
+    <div class="score-row">
+      <div style="width:72px;height:72px;border-radius:50%;background:conic-gradient(var(--acc) 234deg,var(--bg3) 0);display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:800;color:var(--acc);border:3px solid var(--acc3)">6,5</div>
+      <div class="score-txt">
+        <div><span class="score-num">6,5</span><span class="score-max"> / 10</span></div>
+        <div class="score-verdict">Dossier clinique solide · Catalyseur imminent · Risque binaire à assumer</div>
+      </div>
+    </div>
+    <div class="pros-cons">
+      <div class="pro-block">
+        <h4>✅ Points forts</h4>
+        <ul>
+          <li>Phase 3 VITESSE réussie — données robustes</li>
+          <li>BLA FDA H1 2026 imminent (catalyseur majeur)</li>
+          <li>Breakthrough Therapy Designation</li>
+          <li>Trésorerie 229 M$ — runway T2 2027</li>
+          <li>JP Morgan à +10 % du capital</li>
+          <li>Kempen Achat / Objectif 9 € (+183 %)</li>
+          <li>Besoin médical non satisfait fort (allergie arachide enfant)</li>
+          <li>2ème dépôt BLA (1-3 ans) prévu 2026</li>
+        </ul>
+      </div>
+      <div class="con-block">
+        <h4>⛔ Points faibles</h4>
+        <ul>
+          <li>Deux CRL FDA historiques — risque réel</li>
+          <li>RSI 48 / MACD négatif — pas de signal technique</li>
+          <li>Aucun revenu — pur pari réglementaire</li>
+          <li>Burn rate ~47 M$/trim — cash limité</li>
+          <li>Dilution probable à terme (BSA, ATM)</li>
+          <li>Faible couverture analystes (1 broker connu)</li>
+          <li>−29 % vs ATH — momentum dégradé</li>
+          <li>Volatilité extreme autour des événements</li>
+        </ul>
+      </div>
+    </div>
+    <div class="conclu">
+      <strong style="color:var(--acc)">Conclusion :</strong> DBV Technologies représente un <strong>pari binaire de haute conviction</strong> pour les investisseurs qui acceptent le risque biotech. Le dossier clinique est objectivement le plus solide de l'histoire de la société (VITESSE, la plus grande étude jamais menée dans les allergies alimentaires), la trésorerie est sécurisée jusqu'au T2 2027, et le catalyseur principal — le dépôt BLA FDA — est attendu dans les toutes prochaines semaines. Sur le fond, <strong>si la FDA accepte le dossier et le valide, l'objectif à 9 € de Kempen n'est pas hors de portée</strong>. Techniquement, le MACD négatif et le RSI sous 50 indiquent une consolidation — le titre "fait le plein" avant la prochaine annonce. <em>Score 6,5/10 : excellent dossier fondamental mais risque binaire élevé — position sizing prudent obligatoire, idéalement en plusieurs tranches en attendant le signal BLA.</em>
+    </div>
+    <div class="levels">
+      <div class="lv lv-buy">🟢 Zone d'achat : 2,975-3,20 €</div>
+      <div class="lv lv-buy">🟢 Renforcement sur repli : 2,50-2,88 €</div>
+      <div class="lv lv-tp">🔵 TP1 post-BLA : 4,046-4,499 €</div>
+      <div class="lv lv-tp">🔵 TP2 FDA approval : 7-9 €</div>
+      <div class="lv lv-sup">🟡 Support clé : 2,975 € (Fib 61,8%)</div>
+      <div class="lv lv-sup">🟡 Support fort : 2,888 € (Fib 0% récent)</div>
+      <div class="lv lv-cat">🟠 Catalyseur : Annonce dépôt BLA</div>
+      <div class="lv lv-sl">🔴 Stop suggéré : <2,50 €</div>
+    </div>
+  </div>
+</div>
+
+<!-- 17. FOOTER -->
+<div class="footer">
+  <div class="src-title">📚 Sources vérifiées</div>
+  <ul>
+    <li>ProRealTime v4.17.0 — Graphique DBV 1S, RSI(14), MACD ZL(12,26,9) · Dernier tick 22/05/2026</li>
+    <li>Boursorama — Page DBV · Cours 3,182 € · Consensus analystes au 22/05/2026</li>
+    <li>DBV Technologies — Communiqué résultats Phase 3 VITESSE · 16/12/2025</li>
+    <li>DBV Technologies — Résultats Q1 2026 · 30/04/2026</li>
+    <li>DBV Technologies — Accord FDA données sécurité / BLA H1 2026 · 24/03/2025</li>
+    <li>DBV Technologies — Financement 166,7 M€ · Bsofrance / AMF · janv. 2026</li>
+    <li>Ideal-Investisseur.fr — Analyses Q1 2026, Kempen révision objectif · 01-05/05/2026</li>
+    <li>CNBC / Contemporary Pediatrics — Analyse VITESSE · déc. 2025</li>
+    <li>DBV Technologies — Calendrier financier et événements · dbv-technologies.com</li>
+    <li>Scalora Business / Kempen Research — Consensus Buy, objectif 9 € · mai 2026</li>
+  </ul>
+  <div class="npc">
+    ⚠️ <strong>Avertissement — NPC (Ni Publicité, ni Conseil) :</strong> Cette analyse est réalisée à titre personnel et informatif dans le cadre d'un forum d'investissement. Elle ne constitue pas un conseil en investissement, une recommandation d'achat ou de vente, ni une sollicitation financière. DBV Technologies est une valeur biotech en stade pré-commercial : le risque de perte totale du capital est réel. Les performances passées ne préjugent pas des performances futures. L'approbation FDA n'est jamais garantie. Consultez un conseiller financier agréé avant toute décision. Données au 23/05/2026.
+  </div>
+</div>
+
+</div><!-- /wrap -->
+</body>
+</html>
