@@ -203,6 +203,23 @@ h1.company .first{color:var(--acc)}
 
 /* BIOTECH BANNER */
 .bio-banner{background:linear-gradient(90deg,rgba(129,140,248,.12),rgba(99,102,241,.06));border:1px solid var(--acc3);border-radius:8px;padding:10px 16px;font-size:.8rem;color:var(--acc);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+
+/* ADS NOTE */
+.ads-note{background:rgba(250,204,21,.06);border:1px solid rgba(250,204,21,.25);border-radius:8px;padding:12px 16px;font-size:.8rem;color:#fef08a;margin-bottom:14px;line-height:1.7}
+.ads-note strong{color:var(--yellow)}
+
+/* ANALYST TABLE */
+.analyst-table{width:100%;border-collapse:collapse;font-size:.82rem;margin-bottom:16px}
+.analyst-table th{background:var(--bg3);color:var(--acc);font-size:.74rem;text-transform:uppercase;letter-spacing:.08em;padding:9px 12px;text-align:left;border-bottom:1px solid var(--border)}
+.analyst-table td{padding:9px 12px;border-bottom:1px solid var(--bg3);vertical-align:middle}
+.analyst-table td:first-child{color:var(--txt);font-weight:600}
+.analyst-table tr:last-child td{border-bottom:none}
+.analyst-table tr:hover td{background:var(--bg3)}
+.reco-buy{display:inline-block;padding:2px 9px;border-radius:4px;font-size:.73rem;font-weight:700;background:rgba(34,197,94,.15);color:var(--green);border:1px solid rgba(34,197,94,.25)}
+.reco-sell{display:inline-block;padding:2px 9px;border-radius:4px;font-size:.73rem;font-weight:700;background:rgba(248,113,113,.15);color:var(--red);border:1px solid rgba(248,113,113,.25)}
+.reco-out{display:inline-block;padding:2px 9px;border-radius:4px;font-size:.73rem;font-weight:700;background:rgba(34,211,238,.1);color:var(--cyan);border:1px solid rgba(34,211,238,.2)}
+.upside-grn{color:var(--green);font-weight:700}
+.upside-red{color:var(--red);font-weight:700}
 </style>
 </head>
 <body>
@@ -215,7 +232,7 @@ h1.company .first{color:var(--acc)}
 
 <!-- 1. TICKER BADGE -->
 <div class="ticker-bar">
-  <strong>DBV · DBV TECHNOLOGIES</strong> — Biotech allergies alimentaires · Patch Viaskin Peanut (épit. immunothérapie) · Phase 3 VITESSE : <strong>endpoint primaire atteint</strong> (déc. 2025) · BLA FDA H1 2026 <strong>IMMINENT</strong> · Trésorerie : <strong>229 M$</strong> (coverage T2 2027) · Kempen : <strong>Achat / Objectif 9 €</strong> · RSI : <strong>48,52</strong> · MACD ZL : <strong>−0,27</strong>
+  <strong>DBV · DBV TECHNOLOGIES</strong> — Biotech allergies alimentaires · Patch Viaskin Peanut (épit. immunothérapie) · Phase 3 VITESSE : <strong>endpoint primaire atteint</strong> (déc. 2025) · BLA FDA H1 2026 <strong>IMMINENT</strong> · Trésorerie : <strong>229 M$</strong> (coverage T2 2027) · 1 DBVT NASDAQ = 5 actions DBV Paris · Consensus médian : <strong>~7,3 € /action</strong> (7 Achat, 1 Vente Goldman) · RSI : <strong>48,52</strong> · MACD ZL : <strong>−0,27</strong>
 </div>
 
 <!-- 2. TITRE -->
@@ -628,14 +645,19 @@ h1.company .first{color:var(--acc)}
 <!-- 14. CONSENSUS ANALYSTES -->
 <div class="section">
   <h2>🎯 Consensus analystes</h2>
+
+  <div class="ads-note">
+    ⚠️ <strong>Note importante — Ratio ADS :</strong> Depuis le 29 novembre 2024, <strong>1 ADS DBVT (NASDAQ) = 5 actions ordinaires DBV (Euronext Paris)</strong>. Ce changement de ratio (reverse split ADS 1:5) a été réalisé pour rester conforme aux exigences de prix minimum du NASDAQ. <strong>Tous les objectifs en USD publiés pour DBVT doivent donc être divisés par 5 puis convertis en EUR</strong> pour obtenir l'équivalent par action ordinaire DBV. Les objectifs en EUR de certains brokers européens (Kempen, Goldman) s'appliquent directement à l'action ordinaire.
+  </div>
+
   <div class="agrid">
     <div class="acard">
-      <div class="ac-num" style="color:var(--green)">2</div>
+      <div class="ac-num" style="color:var(--green)">4</div>
       <div class="ac-lbl">Achat Fort</div>
     </div>
     <div class="acard">
-      <div class="ac-num" style="color:#4ade80">1</div>
-      <div class="ac-lbl">Achat</div>
+      <div class="ac-num" style="color:#4ade80">3</div>
+      <div class="ac-lbl">Achat / Surperf.</div>
     </div>
     <div class="acard">
       <div class="ac-num" style="color:var(--txt2)">0</div>
@@ -646,13 +668,93 @@ h1.company .first{color:var(--acc)}
       <div class="ac-lbl">Alléger</div>
     </div>
     <div class="acard">
-      <div class="ac-num" style="color:var(--txt2)">0</div>
+      <div class="ac-num" style="color:var(--red)">1</div>
       <div class="ac-lbl">Vendre</div>
     </div>
   </div>
+
+  <table class="analyst-table">
+    <thead>
+      <tr>
+        <th>Analyste</th>
+        <th>Reco</th>
+        <th>Cible annoncée</th>
+        <th>Équiv. € / action DBV</th>
+        <th>Upside</th>
+        <th>Màj</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Goldman Sachs <span style="font-size:.72rem;color:var(--txt2)">(Rajan Sharma)</span></td>
+        <td><span class="reco-sell">Vente</span></td>
+        <td style="color:var(--red)">1,01 € <span style="font-size:.72rem">(EUR direct)</span></td>
+        <td style="color:var(--red);font-weight:700">1,01 €</td>
+        <td class="upside-red">−68 %</td>
+        <td style="color:var(--txt2);font-size:.75rem">09/04/2026</td>
+      </tr>
+      <tr>
+        <td>JMP Securities</td>
+        <td><span class="reco-out">Surperf.</span></td>
+        <td style="color:var(--txt2)">~21 $ DBVT</td>
+        <td style="font-weight:600">~3,75 €</td>
+        <td class="upside-grn">+18 %</td>
+        <td style="color:var(--txt2);font-size:.75rem">2026</td>
+      </tr>
+      <tr>
+        <td>H.C. Wainwright</td>
+        <td><span class="reco-buy">Achat</span></td>
+        <td style="color:var(--txt2)">~38 $ DBVT</td>
+        <td style="font-weight:600">~6,8 €</td>
+        <td class="upside-grn">+114 %</td>
+        <td style="color:var(--txt2);font-size:.75rem">déc. 2025</td>
+      </tr>
+      <tr>
+        <td>Cantor Fitzgerald</td>
+        <td><span class="reco-buy">Achat</span></td>
+        <td style="color:var(--txt2)">40 $ DBVT</td>
+        <td style="font-weight:600">~7,1 €</td>
+        <td class="upside-grn">+124 %</td>
+        <td style="color:var(--txt2);font-size:.75rem">01/05/2026</td>
+      </tr>
+      <tr>
+        <td>Kepler Capital</td>
+        <td><span class="reco-buy">Achat</span></td>
+        <td style="color:var(--txt2)">nc</td>
+        <td style="color:var(--txt2)">nc</td>
+        <td style="color:var(--txt2)">—</td>
+        <td style="color:var(--txt2);font-size:.75rem">05/05/2026</td>
+      </tr>
+      <tr>
+        <td>Kempen</td>
+        <td><span class="reco-buy">Achat</span></td>
+        <td style="color:var(--txt2)">9 € <span style="font-size:.72rem">(EUR direct)</span></td>
+        <td style="font-weight:600;color:var(--acc)">9 €</td>
+        <td class="upside-grn">+183 %</td>
+        <td style="color:var(--txt2);font-size:.75rem">04/05/2026</td>
+      </tr>
+      <tr>
+        <td>Guggenheim</td>
+        <td><span class="reco-buy">Achat</span></td>
+        <td style="color:var(--txt2)">~51 $ DBVT</td>
+        <td style="font-weight:600;color:var(--acc)">~9,1 €</td>
+        <td class="upside-grn">+186 %</td>
+        <td style="color:var(--txt2);font-size:.75rem">04/05/2026</td>
+      </tr>
+      <tr style="background:rgba(34,197,94,.04)">
+        <td>Citizens</td>
+        <td><span class="reco-out">Surperf.</span></td>
+        <td style="color:var(--green);font-weight:700">55 $ DBVT ↑</td>
+        <td style="font-weight:700;color:var(--green)">~9,8 € 🏆</td>
+        <td class="upside-grn">+208 %</td>
+        <td style="color:var(--txt2);font-size:.75rem">30/04/2026</td>
+      </tr>
+    </tbody>
+  </table>
+
   <div class="cbox">
-    <div class="ctitle">Synthèse consensus — Source : Boursorama / Kempen (données au 22/05/2026)</div>
-    Le nombre d'analystes couvrant DBV reste limité, ce qui est typique pour une small-cap biotech en stade pré-commercial. Le consensus disponible est unanimement positif. <strong>Kempen</strong> (analyste spécialisé biotechs européennes) a maintenu sa recommandation à l'<strong>Achat</strong> le 4 mai 2026 tout en abaissant son objectif de <strong>11 € à 9 €</strong> — révision faisant suite à la perte Q1 plus élevée qu'attendu et au ralentissement du timing de commercialisation. L'objectif de 9 € implique néanmoins un potentiel de <strong>+183 %</strong> par rapport au cours actuel. La valorisation implicite de Kempen intègre une probabilité d'approbation FDA et une commercialisation aux États-Unis sur le marché estimé à 1,5-2 Mds $. <em>Note : le faible nombre d'analystes est un facteur de risque — une première couverture négative ou un abaissement pourrait peser sur le cours.</em>
+    <div class="ctitle">Synthèse consensus — Sources : Boursorama / StockAnalysis / TipRanks / Investing.com (données au 23/05/2026)</div>
+    <strong>8 brokers couvrent le dossier</strong> : 7 positifs (Achat / Surperformance), 1 négatif (Goldman Sachs, Vente à 1,01 €). Le consensus médian DBVT se situe autour de <strong>41 $ soit ~7,3 € par action ordinaire</strong> (+129 % d'upside). L'objectif le plus élevé est celui de <strong>Citizens à 55 $ DBVT (~9,8 €/action)</strong>, relevé le 30 avril 2026 après les résultats Q1. Le cas le plus haussier reste <strong>Guggenheim (~9,1 €)</strong> qui maintient sa conviction après des réunions avec le management. À l'opposé, <strong>Goldman Sachs</strong> (analyste Rajan Sharma) maintient opiniâtrement un <strong>Vente à 1,01 €</strong>, abaissé le 9 avril 2026 — soit après VITESSE. Goldman est le seul ours mais son signal est récent et délibéré : il estime que le cours actuel surpaye la probabilité d'approbation. Son track record sur ce dossier reste à surveiller (50 % de réussite historique). <em>Point clé : la dispersion des objectifs (1,01 € à 9,8 €) est extrêmement large — signe classique d'un dossier biotech à catalyseur binaire FDA.</em>
   </div>
 </div>
 
@@ -742,14 +844,14 @@ h1.company .first{color:var(--acc)}
           <li>Aucun revenu — pur pari réglementaire</li>
           <li>Burn rate ~47 M$/trim — cash limité</li>
           <li>Dilution probable à terme (BSA, ATM)</li>
-          <li>Faible couverture analystes (1 broker connu)</li>
+          <li>Goldman Sachs Vente à 1,01 € (avril 2026)</li>
           <li>−29 % vs ATH — momentum dégradé</li>
           <li>Volatilité extreme autour des événements</li>
         </ul>
       </div>
     </div>
     <div class="conclu">
-      <strong style="color:var(--acc)">Conclusion :</strong> DBV Technologies représente un <strong>pari binaire de haute conviction</strong> pour les investisseurs qui acceptent le risque biotech. Le dossier clinique est objectivement le plus solide de l'histoire de la société (VITESSE, la plus grande étude jamais menée dans les allergies alimentaires), la trésorerie est sécurisée jusqu'au T2 2027, et le catalyseur principal — le dépôt BLA FDA — est attendu dans les toutes prochaines semaines. Sur le fond, <strong>si la FDA accepte le dossier et le valide, l'objectif à 9 € de Kempen n'est pas hors de portée</strong>. Techniquement, le MACD négatif et le RSI sous 50 indiquent une consolidation — le titre "fait le plein" avant la prochaine annonce. <em>Score 6,5/10 : excellent dossier fondamental mais risque binaire élevé — position sizing prudent obligatoire, idéalement en plusieurs tranches en attendant le signal BLA.</em>
+      <strong style="color:var(--acc)">Conclusion :</strong> DBV Technologies représente un <strong>pari binaire de haute conviction</strong> pour les investisseurs qui acceptent le risque biotech. Le dossier clinique est objectivement le plus solide de l'histoire de la société, la trésorerie est sécurisée jusqu'au T2 2027, et le catalyseur — le dépôt BLA FDA — est imminent. La couverture analystes est plus étoffée que souvent perçu : <strong>7 brokers positifs avec des objectifs corrigés ADS entre ~7 et 10 € par action ordinaire</strong>, et un seul ours (Goldman Sachs, 1,01 €, avril 2026) dont le track record sur ce dossier reste modeste. Le consensus médian à ~7,3 € implique +129 % depuis les niveaux actuels. Goldman représente néanmoins un signal à ne pas ignorer — il valorise en priorité le risque de CRL et la dilution structurelle. <em>Score 6,5/10 : dossier fondamental solide, upside potentiel confirmé par 7 analystes, mais risque binaire FDA réel — entrée progressive recommandée, stop sous 2,50 €.</em>
     </div>
     <div class="levels">
       <div class="lv lv-buy">🟢 Zone d'achat : 2,975-3,20 €</div>
@@ -772,12 +874,13 @@ h1.company .first{color:var(--acc)}
     <li>Boursorama — Page DBV · Cours 3,182 € · Consensus analystes au 22/05/2026</li>
     <li>DBV Technologies — Communiqué résultats Phase 3 VITESSE · 16/12/2025</li>
     <li>DBV Technologies — Résultats Q1 2026 · 30/04/2026</li>
+    <li>DBV Technologies — Changement ratio ADS (1 ADS = 5 actions) · 11/11/2024, effectif 29/11/2024</li>
     <li>DBV Technologies — Accord FDA données sécurité / BLA H1 2026 · 24/03/2025</li>
-    <li>DBV Technologies — Financement 166,7 M€ · Bsofrance / AMF · janv. 2026</li>
     <li>Ideal-Investisseur.fr — Analyses Q1 2026, Kempen révision objectif · 01-05/05/2026</li>
-    <li>CNBC / Contemporary Pediatrics — Analyse VITESSE · déc. 2025</li>
+    <li>StockAnalysis / CNN Markets / TipRanks — Tableau analystes DBVT complet · mai 2026</li>
+    <li>Investing.com — Goldman Sachs Vente 1,01 €, Citizens 55$, Guggenheim 51$ · avril-mai 2026</li>
+    <li>Globe and Mail — Goldman Sachs maintient Vente, Rajan Sharma · 10-12/04/2026</li>
     <li>DBV Technologies — Calendrier financier et événements · dbv-technologies.com</li>
-    <li>Scalora Business / Kempen Research — Consensus Buy, objectif 9 € · mai 2026</li>
   </ul>
   <div class="npc">
     ⚠️ <strong>Avertissement — NPC (Ni Publicité, ni Conseil) :</strong> Cette analyse est réalisée à titre personnel et informatif dans le cadre d'un forum d'investissement. Elle ne constitue pas un conseil en investissement, une recommandation d'achat ou de vente, ni une sollicitation financière. DBV Technologies est une valeur biotech en stade pré-commercial : le risque de perte totale du capital est réel. Les performances passées ne préjugent pas des performances futures. L'approbation FDA n'est jamais garantie. Consultez un conseiller financier agréé avant toute décision. Données au 23/05/2026.
